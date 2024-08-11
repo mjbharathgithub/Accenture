@@ -1,6 +1,29 @@
 
 public class Main
 {
+	 static String replace(String str,char ch1,char ch2){
+        char ch[]=str.toCharArray();
+        for(int i=0;i<str.length();i++){
+            if(ch[i]==ch1) ch[i]=ch2;
+            
+            else if(ch[i]==ch2) ch[i]=ch1;
+        }
+        
+        return new String(ch);
+    }
+    
+    static int maxExp(int start,int end){
+        int max=0;
+        for(int i=start;i<=end;i++){
+            
+            if(i>0&&(i&(i-1))==0&&i>max){
+                max=i;
+            }
+            
+        }
+        
+        return max;
+    }
     
     static int smallestSum(int arr[],int sum){
         int fsmall=Integer.MAX_VALUE,secSmall=Integer.MAX_VALUE;  
