@@ -1,6 +1,33 @@
 
 public class Main
 {
+	String increasing_decreasing(String s1,String s2){
+        int len1=s1.length(),len2=s2.length();
+        
+        boolean isDecreasing=false,isIncreasing=false;
+        int count=0;
+        for(int j=0,i=0;i<len1;i++,j++){
+            if(i<len1&&i<len2&&s1.charAt(i)!=s2.charAt(i)) count++;
+            if(j<s1.length()-1&&s1.charAt(j)>s1.charAt(j+1)) isDecreasing=true;
+            if(j<s1.length()-1&&s1.charAt(j)<s1.charAt(j+1)) isIncreasing=true;
+            
+
+            
+        }
+        if(isDecreasing&&isIncreasing) return "The alphabets in input1 are not in either increasing or decreasing order";
+        
+        return isDecreasing?("Decreasing:"+count):("Increasing:"+count);
+        
+    }
+    
+    static int findKey(int input1,int input2,int input3){
+        int largest=0;
+        while(input3>0){
+            largest=Math.max(largest,input3%10);
+            input3/=10;
+        }
+        return (input1%10000/1000)*(input2%1000/100)-largest;
+    }
 	 static String replace(String str,char ch1,char ch2){
         char ch[]=str.toCharArray();
         for(int i=0;i<str.length();i++){
