@@ -21,6 +21,19 @@ public class Main
         for(int i=0;i<arr.length;i++) arr[i]=chArray[i];
         
     }
+	static void sortByMiddleElement(int arr[]){
+        List<Integer> list = new ArrayList<>();
+        
+        for(int ele : arr) list.add(ele);
+        
+        list.sort((e1,e2)->{
+            if(((e1+"").charAt((e1+"").length()/2)-(e2+"").charAt((e2+"").length()/2))==0) return e1-e2;
+            return ((e1+"").charAt((e1+"").length()/2)-(e2+"").charAt((e2+"").length()/2));
+        });
+        
+        for(int i=0;i<arr.length;i++) arr[i]=list.get(i);
+        
+    }
 	public static void main(String[] args) {
 		System.out.println("Hello World");
 		long current=System.currentTimeMillis();
