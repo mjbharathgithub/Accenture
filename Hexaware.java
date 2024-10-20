@@ -112,3 +112,58 @@ public class Main
 		System.out.println(getMaxBlood("0912329"));
 		System.out.println(devilKill("PPPPPP@PPP@PP$PP"));
 	}
+
+	static String returnLargestId(String id)
+	{
+	        int max=Integer.MIN_VALUE,ind=0,i=0;
+	        
+	        for(char ele:id.toCharArray()){
+	            if(max<ele){
+	                max=ele;
+	                ind=i;
+	            }
+	            
+	            i++;
+	        }
+	        
+	        return id.substring(ind);
+    	}
+	
+	static int smallestMostFrequentOddNumber(int arr[])
+	{
+	        int small=Integer.MAX_VALUE,freq=Integer.MIN_VALUE;
+	        TreeMap<Integer,Integer> map= new TreeMap<>();
+	        
+	        for(int ele: arr) map.put(ele,map.getOrDefault(ele,0)+1);
+	        System.out.println(map);
+	        
+	        for(Map.Entry<Integer,Integer> entry:map.entrySet()){
+	           if(entry.getKey()%2!=0 && entry.getValue()>freq){
+	               small=entry.getKey();
+	               freq=entry.getValue();
+	           }
+	            
+	        }
+	        return small==Integer.MAX_VALUE?0:small;
+        
+    }
+
+	static int nCuccoo(int n,int memo[]){
+	      
+	       if(n==1){
+	           return 0;
+	           
+	       }
+	       else if(n==2) return 1;
+	       
+	       else if(memo[n]!=0){
+	           return memo[n];
+	       }else{
+	           
+	           memo[n]=1*nCuccoo(n-1,memo)+2*nCuccoo(n-2,memo)+3*1;
+	           
+	           return memo[n];
+	           
+	       }
+	       
+	   }
