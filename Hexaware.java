@@ -167,3 +167,110 @@ public class Main
 	       }
 	       
 	   }
+
+	/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.*;
+public class Main
+{
+    
+    static int[] countFrogs(String str,int start[],int end[]){
+        int frogs,st,ed;
+        int sol[]=new int[start.length];
+        String temp;
+        for(int i=0;i<start.length;i++){
+            frogs=0;
+            temp=str.substring(start[i]-1,end[i]);
+            st=temp.indexOf('|');
+            ed=temp.lastIndexOf('|');
+            for(int j=st;j<=ed;j++){
+                if(temp.charAt(j)=='*'){
+                    frogs++;
+                }
+            }
+            
+            sol[i]=frogs;
+            
+        }
+        return sol;
+    }
+    
+    static int maxBlood(String str){
+        int sum=0,max=0;
+        char nums[]=str.toCharArray();
+        Arrays.sort(nums);
+        for(char ele:nums){
+            sum+=(ele-'0');
+        }
+        for(int i=nums.length-1;i>=0;i--){
+            max+=(nums[i]-'0');
+            sum-=(nums[i]-'0');
+            if(max>sum){
+                return max;
+            }
+        }
+        
+        return 0;
+    }
+    //@
+    static int devilGroup(String str){
+        int group=0;
+        boolean firstPerson=true;
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)!='P'){
+                firstPerson=true;
+            
+            }
+            else if(firstPerson){
+                group++;
+                firstPerson=false;
+            }
+        }
+        return group;
+    }
+    // Sample Input: cdadcda
+    // Sample Output: c
+    static char minFreqChar(String word){
+        int minFreq=Integer.MAX_VALUE;
+        char minChar=' ';
+        LinkedHashMap<Character,Integer> map = new LinkedHashMap<>();
+        for(char ele:word.toCharArray()) map.put(ele,map.getOrDefault(ele,0)+1);
+        
+        for(Character key:map.keySet()){
+            if(map.get(key)<minFreq){
+                minChar=key;
+                minFreq=map.get(key);
+            }
+            
+        }
+        System.out.println(map);
+        return minChar;
+    }
+    // SAMPLE CASE 0:
+    //  0  → i = 0
+    //  5  → j = 5
+    // -1  → k = -1
+    // SAMPLE OUTPUT 0:  24
+    // EXPLANATION 0:  0 + 1 + 2 + 3 + 4 + 5 + 4 + 3 + 2 + 1 + 0 – 1 = 24
+    
+    static int sequenceFinder(int i,int j,int k ){
+        int acc=0;
+        for(int start=i;start<=j;start++){
+            acc+=start;
+            System.out.print(start+" ");
+        }
+        for(int start=j-1;start>=k;start--){
+            acc+=start;
+            System.out.print(start+" ");
+        }
+        return acc;
+    }
+	public static void main(String[] args) {
+		System.out.println(sequenceFinder(0,5,-1));
+	}
+}
